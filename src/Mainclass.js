@@ -2,39 +2,38 @@ import React, { Component } from 'react'
 
 export class Mainclass extends Component {
     constructor(){
-        let mobiles = [{
-            id:"001",
-            name :"oneplus11",
-            price : 56999,
-            isPurchased: true},
-            {
-            id:"002",
-            name : "Vivi Y100",
-            price : 24999,
-            isPurchased: false},
-            {
-            id:"003",
-            name : "Redmi 10",
-            price : 56999,
-            isPurchased : true},
-            {
-            id:"004",
-            name : "iphone 13",
-            price : 62990,
-            isPurchased : false},
-            {
-            id:"005",
-            name : "Nokia",
-            price : 12000,
-            isPurchased : true},
-            {
-            id:"006",
-            name : "Poco M4",
-            price : 13999,
-            isPurchased : true}];
         
         super();
-        this.state={mobiles}
+        this.state={mobiles: [{
+          id:"001",
+          name :"oneplus11",
+          price : 56999,
+          isPurchased: true},
+          {
+          id:"002",
+          name : "Vivi Y100",
+          price : 24999,
+          isPurchased: false},
+          {
+          id:"003",
+          name : "Redmi 10",
+          price : 56999,
+          isPurchased : true},
+          {
+          id:"004",
+          name : "iphone 13",
+          price : 62990,
+          isPurchased : false},
+          {
+          id:"005",
+          name : "Nokia",
+          price : 12000,
+          isPurchased : true},
+          {
+          id:"006",
+          name : "Poco M4",
+          price : 13999,
+          isPurchased : true}]}
         
     }
 
@@ -46,12 +45,13 @@ export class Mainclass extends Component {
         const sortedMobilesHTL =this.state.mobiles.sort((a, b) => a.price - b.price);
            this.setState(sortedMobilesHTL.reverse());
         };
-     filtermobiles = () => {
-           const filteredmobiles =this.state.mobiles.filter((elm)=>elm.isPurchased===true)
-          
-             this.setState(filteredmobiles);
-             console.log("filter",filteredmobiles)
-        };
+        filtermobiles = () => {
+          this.setState({mobiles:this.state.mobiles.filter((elm)=>{
+             if(elm.isPurchased===true){
+                 return elm.name;
+             }
+             })})
+         };
      sortMobilesAsc=()=>{
             const sortedAsc=this.state.mobiles.sort((a, b) =>{
              if (a.name < b.name) {
